@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+  <path>aa1.ac</path>
+
+  <nasal>
+    <load>
+      var livery_update = aircraft.livery_update.new("Aircraft/Grumman-American-AA1/Models/Liveries", 10);
+     
+      var self = cmdarg();
+     
+      var float_0 = self.getNode("sim/multiplay/generic/float[0]", 1);
+      var float_1 = self.getNode("sim/multiplay/generic/float[1]", 1);
+     
+      var crew_door = self.getNode("sim/model/door-positions/crew/position-norm", 1);
+      var passenger_door = self.getNode("sim/model/door-positions/passenger/position-norm", 1);
+      
+      crew_door.alias(float_0);
+      passenger_door.alias(float_1);
+    </load>
+   
+    <unload>
+      livery_update.stop();
+      crew_door.unalias();
+      passenger_door.unalias();
+    </unload>
+  </nasal>
+ 
+  <animation>
+    <!-- Objets opaques -->
+    <object-name>fuselage</object-name>
+    <object-name>canopy</object-name>
+    <object-name>ailes</object-name>
+    <object-name>aileronG</object-name>
+    <object-name>aileronD</object-name>
+    <object-name>voletG</object-name>
+    <object-name>voletD</object-name>
+    <object-name>ailes2</object-name>
+    <object-name>profondeur</object-name>
+    <object-name>direction</object-name>
+    <object-name>antenne</object-name>
+    <object-name>supportaxes</object-name>
+    <object-name>axeAH</object-name>
+    <object-name>axeAB</object-name>
+    <object-name>axeG</object-name>
+    <object-name>axeD</object-name>
+    
+    <object-name>trous</object-name>
+    <object-name>echappe</object-name>
+    <object-name>bol</object-name>
+    <object-name>roueA</object-name>
+    <object-name>roueG</object-name>
+    <object-name>roueD</object-name>
+    <object-name>helice</object-name>
+    
+    <!-- Objets transparents -->
+    <object-name>vitres</object-name>
+    <object-name>vitrescanopy</object-name>
+    <object-name>propdisc</object-name>
+    <object-name>propblur</object-name>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>fuselage</object-name>
+    <object-name>canopy</object-name>
+    <object-name>ailes</object-name>
+    <object-name>aileronG</object-name>
+    <object-name>aileronD</object-name>
+    <object-name>voletG</object-name>
+    <object-name>voletD</object-name>
+    <object-name>ailes2</object-name>
+    <object-name>profondeur</object-name>
+    <object-name>direction</object-name>
+    <object-name>antenne</object-name>
+    <object-name>supportaxes</object-name>
+    <object-name>axeAH</object-name>
+    <object-name>axeAB</object-name>
+    <object-name>axeG</object-name>
+    <object-name>axeD</object-name>
+    
+    <object-name>trous</object-name>
+    <object-name>echappe</object-name>
+    <object-name>bol</object-name>
+    <object-name>roueA</object-name>
+    <object-name>roueG</object-name>
+    <object-name>roueD</object-name>
+    <object-name>helice</object-name>
+    
+    <property-base>sim/model/livery</property-base>
+    <texture-prop>texture</texture-prop>
+    <texture>texture.png</texture>
+    <specular>
+      <red-prop>specular/red</red-prop>
+      <green-prop>specular/green</green-prop>
+      <blue-prop>specular/blue</blue-prop>
+    </specular>
+  </animation>
+
+  <effect>
+    <inherits-from>Aircraft/Generic/Effects/Fuselagereflect</inherits-from>
+    <object-name>fuselage</object-name>
+    <object-name>canopy</object-name>
+    <object-name>ailes</object-name>
+    <object-name>aileronG</object-name>
+    <object-name>aileronD</object-name>
+    <object-name>voletG</object-name>
+    <object-name>voletD</object-name>
+    <object-name>ailes2</object-name>
+    <object-name>profondeur</object-name>
+    <object-name>direction</object-name>
+    <object-name>antenne</object-name>
+    <object-name>supportaxes</object-name>
+    <object-name>axeAH</object-name>
+    <object-name>axeAB</object-name>
+    <object-name>axeG</object-name>
+    <object-name>axeD</object-name>
+  </effect>
+
+  <!-- working for Rembrandt -->
+  <effect>
+    <inherits-from>Aircraft/Grumman-American-AA1/Models/Effects/Glass/glass</inherits-from>
+    <object-name>vitres</object-name>
+    <object-name>vitrescanopy</object-name>
+  </effect>
+  
+  <!-- working for Rembrandt -->
+  <effect>
+    <inherits-from>Effects/model-transparent</inherits-from>
+    <object-name>vitres</object-name>
+    <object-name>vitrescanopy</object-name>
+  </effect>
+
+ <!-- Une ombre pour OSG -->
+  <model>
+    <path>Aircraft/Grumman-American-AA1/Models/shadow.xml</path>
+    <offsets>
+      <x-m>  0.000 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m> -0.935 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Immatriculation
+  <model>
+    <path>Aircraft/Grumman-American-AA1/Models/Immat/immat.xml</path>
+  </model> -->
+
+  <!-- Interieur -->
+  <model>
+    <path>Aircraft/Grumman-American-AA1/Models/Interior/interior.xml</path>
+  </model>
+
+  <!-- Cranking effects -->
+  <!-- Left -->
+  <model>
+    <path>Aircraft/Grumman-American-AA1/Models/Effects/cranking/cranking.xml</path>
+    <offsets>
+      <x-m> -2.02058 </x-m>
+      <y-m>  0.26142 </y-m>
+      <z-m> -0.60624 </z-m>
+      <pitch-deg>  45 </pitch-deg>
+    </offsets>
+  </model>
+
+  <!-- Effets sur le sol -->
+  <!-- Roue avant -->
+  <model>
+    <path>Aircraft/Grumman-American-AA1/Models/Effects/ground/ground0.xml</path>
+    <offsets>
+      <x-m> -2.29330 </x-m>
+      <y-m>  0.00000 </y-m>
+      <z-m> -1.03129 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Roue gauche -->
+  <model>
+    <path>Aircraft/Grumman-American-AA1/Models/Effects/ground/ground1.xml</path>
+    <offsets>
+      <x-m> -0.87589 </x-m>
+      <y-m> -0.99086 </y-m>
+      <z-m> -1.03265 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Roue de droite -->
+  <model>
+    <path>Aircraft/Grumman-American-AA1/Models/Effects/ground/ground2.xml</path>   
+    <offsets>
+      <x-m> -0.87589 </x-m>
+      <y-m>  0.99086 </y-m>
+      <z-m> -1.03265 </z-m>
+    </offsets>
+  </model>
+
+  <animation>
+    <name>HeliceComplete</name>
+    <object-name>propdisc</object-name>
+    <object-name>propblur</object-name>
+    <object-name>helice</object-name>
+    <object-name>bol</object-name>
+  </animation>
+
+  <!-- L'hélice -->
+  <!-- Séléction de l'objet visible en fonction des rpm -->
+  <animation>
+    <type>select</type>
+    <object-name>propdisc</object-name>
+    <condition>
+      <greater-than>
+        <property>/engines/engine[0]/rpm</property>
+        <value>1500</value>
+      </greater-than>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>propblur</object-name>
+    <condition>
+      <greater-than>
+        <property>/engines/engine[0]/rpm</property>
+        <value>600.000</value>
+      </greater-than>
+      <less-than>
+        <property>/engines/engine[0]/rpm</property>
+        <value>1500.001</value>
+      </less-than>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>helice</object-name>
+    <condition>
+      <less-than>
+        <property>/engines/engine[0]/rpm</property>
+        <value>1500</value>
+      </less-than>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>spin</type>
+    <object-name>HeliceComplete</object-name>
+    <condition>
+      <greater-than>
+        <property>engines/engine[0]/rpm</property>
+        <value> 100 </value>
+      </greater-than>
+    </condition>
+    <property>/engines/engine[0]/rpm</property>
+    <factor> 1 </factor>
+    <center>
+      <x-m> -2.72230 </x-m>
+      <y-m>  0.00000 </y-m>
+      <z-m> -0.18486 </z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <!-- Gouverne de profondeur -->
+  <animation>
+    <type>rotate</type>
+    <object-name>profondeur</object-name>
+    <property>surface-positions/elevator-pos-norm</property>
+    <factor>11</factor>
+    <center>
+      <x-m>  2.61532 </x-m>
+      <y-m>  0.00000 </y-m>
+      <z-m> -0.11414 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <!-- Gouverne de direction -->
+  <animation>
+    <type>rotate</type>
+    <object-name>direction</object-name>
+    <property>surface-positions/rudder-pos-norm</property>
+    <factor>20</factor>
+    <axis>
+      <x1-m>  2.593400 </x1-m>
+      <y1-m>  0.000000 </y1-m>
+      <z1-m> -0.004956 </z1-m>
+      <x2-m>  2.591630 </x2-m>
+      <y2-m>  0.000000 </y2-m>
+      <z2-m>  0.861460 </z2-m>
+    </axis>
+  </animation>
+
+  <!-- Animations des ailerons -->
+  <animation>
+    <type>rotate</type>
+    <object-name>aileronG</object-name>
+    <property>/surface-positions/left-aileron-pos-norm</property>
+    <factor>15.0</factor>
+    <axis>
+      <x1-m> -0.31665 </x1-m>
+      <y1-m> -3.51876 </y1-m>
+      <z1-m> -0.20811 </z1-m>
+      <x2-m> -0.31635 </x2-m>
+      <y2-m> -2.11644 </y2-m>
+      <z2-m> -0.31265 </z2-m>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>aileronD</object-name>
+    <property>/surface-positions/right-aileron-pos-norm</property>
+    <factor>15.0</factor>
+    <axis>
+      <x1-m> -0.31635 </x1-m>
+      <y1-m>  2.11644 </y1-m>
+      <z1-m> -0.31265 </z1-m>
+      <x2-m> -0.31665 </x2-m>
+      <y2-m>  3.51876 </y2-m>
+      <z2-m> -0.20811 </z2-m>
+    </axis>
+  </animation>
+
+  <!-- Volets -->
+  <animation>
+    <type>rotate</type>
+    <object-name>voletG</object-name>
+    <property>/surface-positions/flap-pos-norm</property>
+    <factor>25.0</factor>
+    <axis>
+      <x1-m> -0.32867 </x1-m>
+      <y1-m> -2.11716 </y1-m>
+      <z1-m> -0.33660 </z1-m>
+      <x2-m> -0.32867 </x2-m>
+      <y2-m> -0.71412 </y2-m>
+      <z2-m> -0.44662 </z2-m>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>voletD</object-name>
+    <property>/surface-positions/flap-pos-norm</property>
+    <factor>25.0</factor>
+    <axis>
+      <x1-m> -0.32867 </x1-m>
+      <y1-m>  0.71412 </y1-m>
+      <z1-m> -0.44662 </z1-m>
+      <x2-m> -0.32867 </x2-m>
+      <y2-m>  2.11716 </y2-m>
+      <z2-m> -0.33660 </z2-m>
+    </axis>
+  </animation>
+
+  <!-- Suspensions -->
+  <animation>
+    <name>AxeAvant</name>
+    <object-name>roueA</object-name>
+    <object-name>axeAH</object-name>
+    <object-name>axeAB</object-name>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>AxeAvant</object-name>
+    <property>gear/gear[0]/compression-norm</property>
+    <interpolation>
+      <entry><ind> 0.000 </ind><dep> -1 </dep></entry>
+      <entry><ind> 0.235 </ind><dep>  0 </dep></entry>
+      <entry><ind> 1.000 </ind><dep>  5 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m> -2.09124 </x-m>
+      <y-m>  0.00000 </y-m>
+      <z-m> -0.57794 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+ 
+  <animation>
+    <name>AxeGauche</name>
+    <object-name>roueG</object-name>
+    <object-name>axeG</object-name>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>AxeGauche</object-name>
+    <property>gear/gear[1]/compression-norm</property>
+    <interpolation>
+      <entry><ind> 0.000 </ind><dep>  1 </dep></entry>
+      <entry><ind> 0.235 </ind><dep>  0 </dep></entry>
+      <entry><ind> 1.000 </ind><dep> -5 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m> -0.79046 </x-m>
+      <y-m> -0.50482 </y-m>
+      <z-m> -0.50102 </z-m>
+    </center>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+ 
+  <animation>
+    <name>AxeDroite</name>
+    <object-name>roueD</object-name>
+    <object-name>axeD</object-name>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>AxeDroite</object-name>
+    <property>gear/gear[2]/compression-norm</property>
+    <interpolation>
+      <entry><ind> 0.000 </ind><dep> -1 </dep></entry>
+      <entry><ind> 0.235 </ind><dep>  0 </dep></entry>
+      <entry><ind> 1.000 </ind><dep>  5 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m> -0.79046 </x-m>
+      <y-m>  0.50482 </y-m>
+      <z-m> -0.50102 </z-m>
+    </center>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+ 
+  <!-- Rotation de la roue avant en fonction de la gouverne de direction -->
+  <animation>
+    <type>rotate</type>
+    <object-name>roueA</object-name>
+    <object-name>axeA</object-name>
+    <property>surface-positions/rudder-pos-norm</property>
+    <factor> -25 </factor>
+    <center>
+      <x-m> -2.42637 </x-m>
+      <y-m>  0.00000 </y-m>
+      <z-m> -0.76409 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>
+  
+  <!-- Rotation des roues lors du roulage -->
+  <animation>
+    <type>spin</type>
+    <object-name>roueA</object-name>
+    <property>gear/gear[0]/rollspeed-ms</property>
+    <factor> 30 </factor>
+    <center>
+      <x-m> -2.29330 </x-m>
+      <y-m>  0.00000 </y-m>
+      <z-m> -0.91522 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>spin</type>
+    <object-name>roueG</object-name>
+    <property>gear/gear[1]/rollspeed-ms</property>
+    <factor> 30 </factor>
+    <center>
+      <x-m> -0.87589 </x-m>
+      <y-m> -0.99086 </y-m>
+      <z-m> -0.88720 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>spin</type>
+    <object-name>roueD</object-name>
+    <property>gear/gear[2]/rollspeed-ms</property>
+    <factor> 30 </factor>
+    <center>
+      <x-m> -0.87589 </x-m>
+      <y-m>  0.99086 </y-m>
+      <z-m> -0.88720 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <!-- Canopy -->
+  <animation>
+    <name>CanopyComplete</name>
+    <object-name>canopy</object-name>
+    <object-name>vitrescanopy</object-name>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>CanopyComplete</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>doors.crew.toggle();</script>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>translate</type>
+    <object-name>CanopyComplete</object-name>
+    <property>sim/model/door-positions/crew/position-norm</property>
+    <interpolation>
+      <entry><ind> 0.0 </ind><dep> 0.00 </dep></entry>
+      <entry><ind> 0.2 </ind><dep> 0.02 </dep></entry>
+      <entry><ind> 1.0 </ind><dep> 0.02 </dep></entry>
+    </interpolation>
+    <axis>
+      <x>  0 </x>
+      <y>  0 </y>
+      <z>  1 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>translate</type>
+    <object-name>CanopyComplete</object-name>
+    <property>sim/model/door-positions/crew/position-norm</property>
+    <interpolation>
+      <entry><ind> 0.0 </ind><dep> 0.0 </dep></entry>
+      <entry><ind> 0.2 </ind><dep> 0.0 </dep></entry>
+      <entry><ind> 1.0 </ind><dep> 0.8 </dep></entry>
+    </interpolation>
+    <axis>
+      <x>  1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <!-- Ajout des effets lumineux -->
+  <model>
+    <path>Aircraft/Grumman-American-AA1/Models/lights/beacon.xml</path>
+    <offsets>
+      <x-m> 2.57313 </x-m>
+      <y-m> 0.00000 </y-m>
+      <z-m> 1.00383 </z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Grumman-American-AA1/Models/lights/RedLight.xml</path>
+    <offsets>
+      <x-m> -0.90623 </x-m>
+      <y-m> -3.74446 </y-m>
+      <z-m> -0.16332 </z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Grumman-American-AA1/Models/lights/StrobeLight.xml</path>
+    <offsets>
+      <x-m> -0.87623 </x-m>
+      <y-m> -3.74446 </y-m>
+      <z-m> -0.16332 </z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Grumman-American-AA1/Models/lights/GreenLight.xml</path>
+    <offsets>
+      <x-m> -0.90623 </x-m>
+      <y-m>  3.74446 </y-m>
+      <z-m> -0.16332 </z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/Grumman-American-AA1/Models/lights/StrobeLight.xml</path>
+    <offsets>
+      <x-m> -0.87623 </x-m>
+      <y-m>  3.74446 </y-m>
+      <z-m> -0.16332 </z-m>
+    </offsets>
+  </model>
+
+</PropertyList>
